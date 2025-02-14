@@ -1,0 +1,22 @@
+[project]
+name = "task-manager"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "crewai>=0.102.0",
+    "litellm>=1.60.2",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+
+app = "task_manager.app:kickoff"
+app2 = "task_manager.app:plot"
+
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
