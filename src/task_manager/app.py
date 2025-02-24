@@ -29,7 +29,7 @@ class FlowRouter(Flow):
         self.task = input(" Enter your task: ")
         self.route_task()  
 
-    @router(condition=lambda self: self.task is not None) 
+    @router(task_manager) 
     def route_task(self):
         agents = ["Planner", "Executor", "Reviewer"]
 
@@ -58,13 +58,13 @@ class FlowRouter(Flow):
     @listen(planner_agent)
     def executor_agent(self):
         print(" Executor Agent is executing the task...")
-        self.result = ask_gemini(f"Execute the task: {self.task}")
+        self.result = ask_gemini(f"Execute the task: {self.subtask}")
         print(f" Execution Result: {self.result}")
 
     @listen(executor_agent)
     def reviewer_agent(self):
         print(" Reviewer Agent is reviewing the task...")
-        self.feedback = ask_gemini(f"Review the task: {self.task}")
+        self.feedback = ask_gemini(f"Review the task: {self.result}")
         print(f" Feedback: {self.feedback}")
 
 def kickoff():
