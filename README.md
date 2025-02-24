@@ -35,9 +35,11 @@ GEMINI_API_KEY=your_api_key_here
 3️⃣ **Install Dependencies**
 ```bash
 uv pip install -r requirements.txt
-uv run app
 ```
 
-
+4️⃣ **Run the project**
+```bash
+uv run app
+```
 
 

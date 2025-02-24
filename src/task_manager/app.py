@@ -1,4 +1,4 @@
-from crewai.flow.flow import Flow, start, router
+from crewai.flow.flow import Flow, start, router, listen
 from litellm import completion
 from dotenv import load_dotenv
 import os
@@ -49,17 +49,19 @@ class FlowRouter(Flow):
 
         else:
             print(" Task flow complete!")
-
+    @listen(route_task)
     def planner_agent(self):
         print("Planner agent is breaking down the task...")
         self.subtask = ask_gemini(f"Break down the task: {self.task}")   
         print(f" Subtask: {self.subtask}")
-
+    
+    @listen(planner_agent)
     def executor_agent(self):
         print(" Executor Agent is executing the task...")
         self.result = ask_gemini(f"Execute the task: {self.task}")
         print(f" Execution Result: {self.result}")
 
+    @listen(executor_agent)
     def reviewer_agent(self):
         print(" Reviewer Agent is reviewing the task...")
         self.feedback = ask_gemini(f"Review the task: {self.task}")
@@ -73,4 +75,3 @@ def plot():
     obj = FlowRouter()
     obj.plot() 
 
-kickoff()
