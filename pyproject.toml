@@ -11,11 +11,8 @@ dependencies = [
 ]
 
 [project.scripts]
-
 app = "task_manager.app:kickoff"
 app2 = "task_manager.app:plot"
-
-
 
 [build-system]
 requires = ["hatchling"]

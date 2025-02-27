@@ -1,4 +1,4 @@
-# 🚀 AI Task Manager with CrewAI & Gemini  
+# 🚀 Agentic Task Manager with CrewAI & Gemini  
 
 ## Overview  
 This project is an **AI-driven Task Manager** using **CrewAI** and **Gemini AI**, developed in **Cursor (AI-powered code editor)**. It automates task handling with AI agents that **plan, execute, and review tasks** efficiently.  
